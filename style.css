@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: 0.25s all ease-in-out;
+}
+
+.container {
+    background-image: url(img/);
+}
+
+.btnCall {
+    background-color:#243B4A;
+    color: white;
+    padding: 5px 10px;
+    border: transparent;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+.rowGraphic {
+    border: 1px solid black;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.graphic #pollutionClass {
+    height: 40px;
+    color: white;
+    font-weight: bold;
+    font-family: 20px;
+    border-radius: 5px;
+}
+
+#myChart {
+    height: 500px!important;
+    width: 100%!important;
+    font-size: 15px!important;
+}
