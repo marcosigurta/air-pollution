@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smog Tracker</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <div class="container" style="height: 100vh;">
-        <div class="row justify-content-center">
-            <input type="text" value="roma">
-            <button class="btnCall">Click</button>
+
+    <div class="container">
+
+        <div class="row input justify-content-center">
+            <input type="text" value="" placeholder="City...">
+            <button class="btnCall">Search</button>
         </div>
+
         <div class="row rowGraphic">
             <div class="graphic col col-xs-12">
-                <div id="pollutionClass" class="col col-xs-12 col-md-6 d-flex justify-content-center align-items-center"></div>
+                <span><i>City: </i></span><span id="city"></span><br>
+                <span><i>Air Quality(AQI): </i></span><span id="classAQI"></span><br>
+                <span><i>Quality: </i></span><span id="quality"></span><br>
+                <span><i>Temperature: </i></span><span id="temp" class="col-xs-2"></span>
             </div>
-            <div id="quality"></div>
-            <div id="temp" class="col-xs-2"></div>
-        </div>
-        <div class="prova">
-        
-
         </div>
     </div>
 
+    <div class="container">
+        <div class="row prova">
 
-    
+        </div>
 
-    
- 
+
+    </div>
+
+
+
+
+
 
 
 
@@ -43,4 +52,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

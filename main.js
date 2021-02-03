@@ -5,27 +5,27 @@ function init() {
     newChart();
 }
 
-function newChart(o3,nO2,pm10,pm25) {
+function newChart(o3, nO2, pm10, pm25) {
 
     $('#myChart').remove(); // this is my <canvas> element
     $('.prova').append(' <canvas id="myChart" width="200" height="200";"></canvas>');
-    
-    var ctx =$('#myChart');
-    
-    
+
+    var ctx = $('#myChart');
+
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['O3', 'NO2', 'PM10', 'PM25'],
             datasets: [{
-                data: [o3, nO2,pm10,pm25],
+                data: [o3, nO2, pm10, pm25],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 99, 132,0.7)',
+                    'rgba(54, 162, 235,0.7)',
+                    'rgba(255, 206, 86,0.7)',
+                    'rgba(75, 192, 192,0.7)',
+                    'rgba(153, 102, 255,0.7)',
+                    'rgba(255, 159, 64,0.7)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -40,7 +40,7 @@ function newChart(o3,nO2,pm10,pm25) {
         },
         options: {
             legend: {
-                display:false
+                display: false
             },
             scales: {
                 yAxes: [{
@@ -58,9 +58,9 @@ function newChart(o3,nO2,pm10,pm25) {
 
 function getData() {
 
-    $('.btnCall').click(function() {
+    $('.btnCall').click(function () {
 
-        
+
 
 
         var targetVal = $('input').val();
@@ -81,66 +81,81 @@ function getData() {
 
                     //AQI 
 
-                    var classe = parseInt(data['data']['aqi']);
+                    var classeAQI = parseInt(data['data']['aqi']);
 
-                    if (classe < 50) {
+                    $('#classAQI').html(classeAQI);
 
-                        $('#pollutionClass').css('background-color', '#06A77D');
+                    if (classeAQI < 50) {
+
+                        $('.rowGraphic').css('background-color', 'rgba(6, 167, 125, 0.88)');
+                        $('.graphic span').css('color', '#000');
+
                         $('#quality').html('Good');
                     };
 
-                    if (classe > 50) {
+                    if (classeAQI > 50) {
 
-                        $('#pollutionClass').css('background-color', '#F7F06D');
+                        $('.rowGraphic').css('background-color', 'rgba(247, 240, 109,  0.88');
+                        $('.graphic span').css('color', '#000');
+
                         $('#quality').html('Moderate');
 
                     };
 
-                    if (classe > 100) {
+                    if (classeAQI > 100) {
 
-                        $('#pollutionClass').css('background-color', '#FFB140');
+                        $('.rowGraphic').css('background-color', 'rgba(255, 177, 64, 0.88)');
+                        $('.graphic span').css('color', '#000');
+
                         $('#quality').html('Unhealthy For Sensitive Group');
                     };
 
-                    if (classe > 150) {
+                    if (classeAQI > 150) {
 
-                        $('#pollutionClass').css('background-color', '#AF1B3F');
+                        $('.rowGraphic').css('background-color', 'rgba(175, 27, 63, 0.88)');
+                        $('.graphic span').css('color', '#fff');
+
                         $('#quality').html('Unhealthy ');
                     };
 
-                    if (classe > 200) {
+                    if (classeAQI > 200) {
 
-                        $('#pollutionClass').css('background-color', '#A882DD');
+                        $('.rowGraphic').css('background-color', 'rgba(168, 130, 221,0.88)');
+                        $('.graphic span').css('color', '#fff');
+
                         $('#quality').html('Very Unhealthy ');
                     };
 
-                    if (classe > 300) {
+                    if (classeAQI > 300) {
 
-                        $('#pollutionClass').css('background-color', '#6457A6');
+                        $('.rowGraphic').css('background-color', 'rgba(100, 87, 166, 0.88)');
+                        $('.graphic span').css('color', '#fff');
+
                         $('#quality').html('Hazardous');
                     };
 
-                    $('#pollutionClass').html(classe);
+                    //CITY
+
+                    var city = data['data']['city']['name'];
+                    $('#city').html(city);
 
 
                     //TEMP
 
                     var temp = data['data']['iaqi']['t']['v'];
 
-                    $('#temp').html(temp + "°");
+                    $('#temp').html((temp).toFixed(0) + "°");
 
-                    
+
                     //O3
-                    
-                    var o3 = data['data']['iaqi']['o3']['v'];
-                    console.log(o3);
 
-                   
+                    var o3 = data['data']['iaqi']['o3']['v'];
+
 
                     //NO2
 
                     var nO2 = data['data']['iaqi']['no2']['v'];
-                    console.log(nO2);
+
 
                     //PM10
 
@@ -150,11 +165,11 @@ function getData() {
 
                     var pm25 = data['data']['iaqi']['pm25']['v'];
 
-                    newChart(o3,nO2,pm10,pm25);
-                    
+                    newChart(o3, nO2, pm10, pm25);
+
                 },
                 error: function (err) {
-                    
+
                     console.log(err)
                 }
             });
